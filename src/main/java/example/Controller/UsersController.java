@@ -1,5 +1,7 @@
 package example.Controller;
 
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import example.DTO.UserRequest;
 import example.DTO.UserResponse;
 import example.Service.UsersService;
-
 @RestController
 public class UsersController {
 
@@ -21,6 +22,11 @@ public class UsersController {
         this.helloService = helloService;
     }
 
+    @GetMapping("/users")
+    public ArrayList<UserResponse> ReadAllUser()
+    {
+        return helloService.getAllUser();
+    }
 
     @GetMapping("/users/{id}")
     public UserResponse hello(@PathVariable long id) {

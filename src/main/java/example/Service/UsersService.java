@@ -1,12 +1,14 @@
 package example.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import example.DTO.UserRequest;
 import example.DTO.UserResponse;
 import example.Entity.User;
 import example.Repository.UserRepository;
-
 @Service
 public class UsersService {
 
@@ -61,5 +63,25 @@ public class UsersService {
         userRepository.deleteById(id);
         return "사용자 삭제가 완료되었습니다.";
 
+    }
+
+    public ArrayList<UserResponse> getAllUser()
+    {
+        List<User> users=userRepository.findAll();
+        
+        ArrayList<UserResponse> response = new ArrayList<>();
+        for(int i=0; i<users.size(); i++)
+        {
+            User user=users.get(i);
+            response.add(
+                new UserResponse(
+                    user.getName(),
+                    user.getAge(),
+                    "사용자 조회에 성공했습니다."
+                )
+            );
+        }
+
+        return response;
     }
 }
