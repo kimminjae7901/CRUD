@@ -55,4 +55,11 @@ public class UsersService {
             "사용자 정보 변경이 완료되었습니다."
         );
     }
+
+    public String deleteUser(long id)
+    {
+        userRepository.deleteById(id);
+        return "사용자 삭제가 완료되었습니다.";
+
+    }
 }
