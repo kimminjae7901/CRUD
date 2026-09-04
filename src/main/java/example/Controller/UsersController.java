@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import example.DTO.UserRequest;
 import example.DTO.UserResponse;
@@ -29,6 +30,11 @@ public class UsersController {
     public UserResponse createUser(@RequestBody UserRequest userRequest)
     {
         return helloService.createUser(userRequest);
+    }
+
+    @PutMapping("/users/{id}")
+    public UserResponse updateUser(@PathVariable long id,@RequestBody UserRequest userRequest){
+        return helloService.updateUser(id,userRequest);
     }
     
 }

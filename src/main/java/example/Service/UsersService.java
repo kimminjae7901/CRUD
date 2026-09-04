@@ -41,4 +41,18 @@ public class UsersService {
             "회원가입이 완료되었습니다."
         );
     }
+
+    public UserResponse updateUser(long id,UserRequest userRequest){
+        User updateuser=userRepository.findById(id).orElseThrow();
+        updateuser.setName(userRequest.getName());
+        updateuser.setAge(userRequest.getAge());
+
+        userRepository.save(updateuser);
+
+        return new UserResponse(
+            updateuser.getName(),
+            updateuser.getAge(),
+            "사용자 정보 변경이 완료되었습니다."
+        );
+    }
 }

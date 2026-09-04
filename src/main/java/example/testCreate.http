@@ -2,8 +2,8 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-    "name": "kimminjae",
-    "age": 30
+    "name": "junho",
+    "age": 15
 }
 
 
