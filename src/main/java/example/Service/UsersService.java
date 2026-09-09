@@ -9,6 +9,7 @@ import example.DTO.UserRequest;
 import example.DTO.UserResponse;
 import example.Entity.User;
 import example.Repository.UserRepository;
+import example.exception.UserNotFoundException;
 @Service
 public class UsersService {
 
@@ -20,7 +21,7 @@ public class UsersService {
 
     public UserResponse getUser(long id)
     {
-        User readUser= userRepository.findById(id).orElseThrow();
+        User readUser= userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         return new UserResponse(
             readUser.getName(),
             readUser.getAge(),
@@ -45,7 +46,7 @@ public class UsersService {
     }
 
     public UserResponse updateUser(long id,UserRequest userRequest){
-        User updateuser=userRepository.findById(id).orElseThrow();
+        User updateuser=userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         updateuser.setName(userRequest.getName());
         updateuser.setAge(userRequest.getAge());
 
