@@ -1,1 +1,1 @@
-GET /users/7/posts
+GET http://localhost:8080/users/7/posts
