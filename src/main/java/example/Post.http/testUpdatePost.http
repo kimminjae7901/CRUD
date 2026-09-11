@@ -1,0 +1,8 @@
+PUT http://localhost:8080/posts/1
+Content-Type: application/json
+
+{
+    "title": "Flask 공부",
+    "content": "Python 공부중",
+    "userId": 4
+}

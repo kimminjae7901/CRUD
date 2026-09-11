@@ -38,5 +38,15 @@ public class GlobalExceptionHandler {
 
         return new ErrorResponse(400,messages);
     }
+
+    @ExceptionHandler(PostNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlePostNotFoundException(
+        PostNotFoundException exception){
+            ErrorResponse errorResponse =new ErrorResponse(404,List.of(exception.getMessage()));
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+
+    
 }
 

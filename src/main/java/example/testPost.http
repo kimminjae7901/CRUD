@@ -1,8 +1,0 @@
-POST http://localhost:8080/posts
-Content-Type: application/json
-
-{
-    "title": "Spring 공부",
-    "content": "JPA 공부중",
-    "userId": 5
-}
