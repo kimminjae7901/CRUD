@@ -2,16 +2,18 @@ package example.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import example.DTO.PostRequest;
+import example.DTO.PostResponse;
+import example.Entity.Post;
+import example.Entity.User;
 import example.Repository.PostRepository;
 import example.Repository.UserRepository;
-import example.DTO.PostResponse;
-import example.DTO.PostRequest;
-import example.Entity.Post;
-import example.exception.UserNotFoundException;
 import example.exception.PostNotFoundException;
-import example.Entity.User;
+import example.exception.UserNotFoundException;
 
 @Service
 public class PostService {
@@ -52,6 +54,7 @@ public class PostService {
         );
     }
 
+    @Transactional
     public PostResponse UpdatePostData(Long id, PostRequest postRequest)
     {
         Post post= postRepository.findById(id).orElseThrow(PostNotFoundException::new);
@@ -62,7 +65,6 @@ public class PostService {
         post.setContent(postRequest.getContent());
         post.setUser(user);
         
-        postRepository.save(post);
 
         return new PostResponse(
             post.getTitle(),
@@ -93,4 +95,10 @@ public class PostService {
 
         return list;
     }
+
+    public List<User> findAllWithPosts() {
+        return userRepository.findAllWithPosts();
+    }
+
+    
 }

@@ -85,4 +85,8 @@ public class UsersService {
 
         return response;
     }
+
+    public List<User> findAllWithPosts() {
+        return userRepository.findAllWithPosts();
+    }
 }

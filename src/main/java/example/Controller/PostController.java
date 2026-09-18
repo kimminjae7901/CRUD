@@ -45,7 +45,7 @@ public class PostController {
     {
         return postService.DeletePostData(id);
     }
-
+    
     @GetMapping("/users/{id}/posts")
     public ArrayList<PostResponse> ReadUserAllPost(@PathVariable Long id)
     {

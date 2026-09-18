@@ -9,4 +9,6 @@ import example.Entity.User;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUser(User user);
+    
+
 }

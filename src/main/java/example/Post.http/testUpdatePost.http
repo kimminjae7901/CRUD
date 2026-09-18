@@ -1,8 +1,8 @@
-PUT http://localhost:8080/posts/1
+PUT http://localhost:8080/posts/2
 Content-Type: application/json
 
 {
-    "title": "Flask 공부",
-    "content": "Python 공부중",
-    "userId": 4
+    "title": "변경된 제목",
+    "content": "변경된 내용",
+    "userId": 5
 }
